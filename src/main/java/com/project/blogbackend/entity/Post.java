@@ -2,8 +2,6 @@ package com.project.blogbackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.internal.log.SubSystemLogging;
-import org.springframework.lang.NonNull;
 
 import java.util.Objects;
 
@@ -17,7 +15,6 @@ public class Post {
     @Column(name = "title")
     private String title;
     @Column(name = "text",columnDefinition = "text")
-    @Lob
     private String text;
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id",nullable = false)

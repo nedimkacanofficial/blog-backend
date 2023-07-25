@@ -13,7 +13,6 @@ public class Comment {
     @Column(name = "id")
     private Long id;
     @Column(name = "text",columnDefinition = "text")
-    @Lob
     private String text;
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "post_id",nullable = false)

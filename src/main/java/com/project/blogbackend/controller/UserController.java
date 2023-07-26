@@ -75,8 +75,9 @@ public class UserController {
         log.debug("REST request to delete User : {}", id);
         try {
             this.userService.deleteUser(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
+            log.debug("Exception: {}",e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

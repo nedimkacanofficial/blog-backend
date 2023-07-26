@@ -19,7 +19,7 @@ import java.util.Optional;
 @RequestMapping("/posts")
 @Tag(name = "Post", description = "actions api documentation.")
 public class PostController {
-    private final Logger log= LoggerFactory.getLogger(PostController.class);
+    private final Logger log = LoggerFactory.getLogger(PostController.class);
     private final PostService postService;
     private final PostRepository postRepository;
 
@@ -29,57 +29,57 @@ public class PostController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Post>> getAllPosts(@RequestParam Optional<Long> userId){
-        log.debug("REST request to get all Posts or Posts is userId: {}",userId);
-        List<Post> posts=this.postService.getAllPosts(userId);
+    public ResponseEntity<List<Post>> getAllPosts(@RequestParam Optional<Long> userId) {
+        log.debug("REST request to get all Posts or Posts is userId: {}", userId);
+        List<Post> posts = this.postService.getAllPosts(userId);
         if (posts == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(posts,HttpStatus.OK);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Post> getPostById(@PathVariable Long id){
+    public ResponseEntity<Post> getPostById(@PathVariable Long id) {
         log.debug("REST request to get Post");
-        Post post=this.postService.getPostById(id);
+        Post post = this.postService.getPostById(id);
         if (post == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(post,HttpStatus.OK);
+        return new ResponseEntity<>(post, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Post> savePost(@RequestBody PostCreateDTO newPostCreateDTO){
+    public ResponseEntity<Post> savePost(@RequestBody PostCreateDTO newPostCreateDTO) {
         log.debug("REST request to save Post : {}", newPostCreateDTO);
         try {
-            Post post=this.postService.savePost(newPostCreateDTO);
-            return new ResponseEntity<>(post,HttpStatus.CREATED);
+            Post post = this.postService.savePost(newPostCreateDTO);
+            return new ResponseEntity<>(post, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Post> updatePost(@RequestBody PostUpdateDTO postUpdateDTO, @PathVariable Long id){
+    public ResponseEntity<Post> updatePost(@RequestBody PostUpdateDTO postUpdateDTO, @PathVariable Long id) {
         log.debug("REST request to update User : {}, {}", id, postUpdateDTO);
-        Post post=this.postService.updatePost(postUpdateDTO,id);
+        Post post = this.postService.updatePost(postUpdateDTO, id);
         if (!this.postRepository.existsById(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         if (post == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(post,HttpStatus.OK);
+        return new ResponseEntity<>(post, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePost(@PathVariable Long id){
+    public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         log.debug("REST request to delete Post : {}", id);
         try {
             this.postService.deletePost(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            log.debug("Exception: {}",e);
+            log.debug("Exception: {}", e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

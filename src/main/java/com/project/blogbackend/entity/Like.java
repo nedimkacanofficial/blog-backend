@@ -1,10 +1,12 @@
 package com.project.blogbackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
+@Schema(name = "Like")
 @Entity
 @Table(name = "post_like")
 public class Like {

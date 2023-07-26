@@ -15,17 +15,6 @@ public class PostMapper {
         return post;
     }
 
-    /*
-    public static PostCreateDTO toDto(Post post) {
-        PostCreateDTO postDto = new PostCreateDTO();
-        postDto.setId(post.getId());
-        postDto.setUserId(post.getUser().getId());
-        postDto.setTitle(post.getTitle());
-        postDto.setText(post.getText());
-        return postDto;
-    }
-    */
-
     public static Post toUpdateEntity(PostUpdateDTO postUpdateDTO, Post post){
         post.setTitle(postUpdateDTO.getTitle());
         post.setText(postUpdateDTO.getText());

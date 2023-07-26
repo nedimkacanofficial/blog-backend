@@ -1,5 +1,8 @@
 package com.project.blogbackend.service.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(name = "LikeCreateDTO")
 public class LikeCreateDTO {
     private Long id;
     private Long userId;

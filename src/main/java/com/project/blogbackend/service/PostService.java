@@ -30,7 +30,7 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public List<Post> getAllPosts(Optional<Long> userId){
-        log.debug("Request to get all Posts");
+        log.debug("Request to get all Posts or Posts is userId: {}",userId);
         if (userId.isPresent()) {
             return this.postRepository.findByUserId(userId.get());
         }

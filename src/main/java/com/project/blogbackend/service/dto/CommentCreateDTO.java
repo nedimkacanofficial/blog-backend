@@ -1,5 +1,8 @@
 package com.project.blogbackend.service.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(name = "CommentCreateDTO")
 public class CommentCreateDTO {
     private Long id;
     private String text;

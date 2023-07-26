@@ -1,10 +1,11 @@
 package com.project.blogbackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 import java.util.Objects;
-
+@Schema(name = "Post")
 @Entity
 @Table(name = "post")
 public class Post {

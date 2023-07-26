@@ -1,5 +1,8 @@
 package com.project.blogbackend.service.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(name = "PostUpdateDTO")
 public class PostUpdateDTO {
     private String title;
     private String text;

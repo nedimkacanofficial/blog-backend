@@ -1,9 +1,11 @@
 package com.project.blogbackend.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
+@Schema(name = "User")
 @Entity
 @Table(name = "user")
 public class User {

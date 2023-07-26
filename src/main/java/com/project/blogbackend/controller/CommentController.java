@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/comments")
-@Tag(name = "Comment", description = "Comment actions api documentation.")
+@Tag(name = "Comment", description = "actions api documentation.")
 public class CommentController {
     private final Logger log= LoggerFactory.getLogger(CommentController.class);
     private final CommentService commentService;
